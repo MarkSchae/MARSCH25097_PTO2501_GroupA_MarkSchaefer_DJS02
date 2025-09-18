@@ -1,0 +1,53 @@
+/* Try to only create custom classes for repeated code otherwise it defeats the main point of Tailwind */
+
+@import "tailwindcss";
+
+/* 
+Modal is dynamicaly created
+Modal needs a cover img
+a title
+small img and heading of number of seasons
+The genre titles
+when the podcast information was updated  */
+
+/* Need to create custom tailwind classes since all the dom elements are dynamically created */
+
+.podcast-card-mobile {
+    @apply flex flex-col gap-4 p-3.5 bg-white rounded;
+}
+
+.podcast-modal-mobile {
+    @apply fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-md w-[90vw] max-w-lg flex flex-col gap-6 max-h-[90vh] overflow-y-auto;
+}
+
+/*.podcast-card-desktop {
+    @apply sm:grid sm:grid-cols-4;
+}*/
+
+/*.podcast-modal-desktop {
+    @apply fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-md w-[90vw] max-w-lg flex flex-col gap-6;
+}*/
+
+.genre-display-styling {
+    @apply flex flex-row justify-between;
+}
+
+.genre-name-card {
+    @apply bg-gray-300 rounded shadow shadow-black p-1;
+}
+
+.backdrop {
+    @apply fixed inset-0 bg-black/50 z-40;
+}
+
+.exit-btn {
+    @apply w-3.5 h-3.5 cursor-pointer fixed top-2 right-2;
+}
+
+.season-card {
+    @apply flex flex-col sm:flex-row justify-between items-center gap-2 p-2 bg-gray-100 rounded shadow;
+}
+
+.season-card-container {
+    @apply flex flex-col gap-4;
+}
