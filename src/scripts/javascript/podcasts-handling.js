@@ -1,5 +1,7 @@
 // Dynamically create the DOM elements for each podcast as well as the styling
 
+// Adding a podcast must be done using functional programming (nothing is modified), use new variables that point to the original
+
 /*Need to loop through the podcasts array
 <div>
     <img src="" alt=""> podcasts[index].image 
