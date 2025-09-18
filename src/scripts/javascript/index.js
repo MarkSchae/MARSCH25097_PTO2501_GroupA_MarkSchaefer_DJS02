@@ -19,7 +19,7 @@ const localStoragePodcasts = dataManager.loadDataFromLocal('podcasts');
 const localStorageGenres = dataManager.loadDataFromLocal('genres');
 const localStorageSeasons = dataManager.loadDataFromLocal('seasons');
 
-const combinedArrayData = relationalMapper.combineStaticArrays(localStoragePodcasts, localStorageGenres, localStorageSeasons);
+export const combinedArrayData = relationalMapper.combineStaticArrays(localStoragePodcasts, localStorageGenres, localStorageSeasons);
 
 // Build the render class now and call render podcast card, podcast modal, etc on the combined data array
 const podcastsContainer = document.getElementById('podcasts-container');
