@@ -27,7 +27,7 @@ export default class render {
             // Loop the arrays and create the DOM elements to display the specific data
             // Need from podcasts array: cover img, title, amount of seasons, geners, last updated
             const podcastCard = document.createElement('div');
-            podcastCard.dataset.podcast = podcast.id; // Remember that the dataset attribute is viable to anyone
+            podcastCard.dataset.podcast = podcast.id; // Remember that the dataset attribute is viewable to anyone
 
             const podcastCardClasses = 'podcast-card-mobile podcast-card-desktop modal-btn';  
 
