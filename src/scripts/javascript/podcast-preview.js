@@ -1,4 +1,4 @@
-// Web component to open a podcast view on hover (already have a onclick open modal)
+// Web component to open a dataObject view on hover (already have a onclick open modal)
     // On hover, opens the modal but only enlarges in place instead of being in the center
     // If hovered off the modal, modal closes
     // Might need to make the variable names more vague and accept data seperate from the main app code
@@ -22,7 +22,7 @@ class modalPreview extends HTMLElement { // Extending a normal html element crea
     if (card) { // Checking if the element/target does exist in the DOM
         const cardId = cardId.dataset.card;
         this.renderCardModal(cardId); // Ensure data types are correct
-        return; // Click was outside a podcast card
+        return; // Click was outside a dataObject card
     } 
 
     if (click.target.matches('#exit-btn-id')) {
@@ -37,15 +37,22 @@ class modalPreview extends HTMLElement { // Extending a normal html element crea
     this.appData = dataFromApp;
     this.render(); // Update the shadow DOM inside the component
   }
-  // Render all podcasts
-  render() { // Use setter data (this.appData for all podcasts data)
+  // Render all dataObjects
+  render() { // Use setter data (this.appData for all dataObjects data)
     const domNode = this.shadowRoot; // root node of the shadow (essetially a copy of the DOM only availabe inside this component), encapsulated DOM tree inside this component
 
-    // Create DOM elements dynamically, open, close, other funcitonality, and append to the shadowroot/podcastModal
+    // Create DOM elements dynamically, open, close, other funcitonality, and append to the shadowroot/dataObjectModal
 
   }
   // Render modal view
-  renderCardModal(cardId) { // Use setter data (this.appData for all podcasts data) and event listener podcast id
+  renderCardModal(cardId) { // Use setter data (this.appData for all dataObjects data) and event listener dataObject id
 
+  }
+
+  removeCardModal () {
+    const targetRemove = this.shadowRoot.querySelector('#data-modal-container-id');
+    if (targetRemove) {
+        targetRemove.remove();
+    }
   }
 }
