@@ -14,3 +14,7 @@ fs.writeFileSync('./tailwind-css.js', jsContent);
 const style = document.createElement('style');
 style.textContent = TAILWIND_CSS; // Browser sees a string with all CSS
 this.shadowRoot.appendChild(style);
+
+
+
+
