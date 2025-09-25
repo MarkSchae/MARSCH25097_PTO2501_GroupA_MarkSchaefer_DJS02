@@ -18,3 +18,7 @@ Might need to seperate some logic and dom creation in the render class
 
 Remember to use functional programming for pure data (no modyfying arrays etc)
 
+. - look inside the same parent folder, then any subfolder can be accessed by name 
+
+.. - look inside the parent folder above the import/link file folder, then use names of files and subfolders 
+

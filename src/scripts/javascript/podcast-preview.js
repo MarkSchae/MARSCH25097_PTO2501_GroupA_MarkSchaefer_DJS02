@@ -1,10 +1,12 @@
+// File system module for node.js at build instead of the browser (able to use node which is serverside)
+import fs from 'fs';
 // Web component to open a dataObject view on hover (already have a onclick open modal)
     // On hover, opens the modal but only enlarges in place instead of being in the center
     // If hovered off the modal, modal closes
     // Might need to make the variable names more vague and accept data seperate from the main app code
 
 // Create the web component
-class modalPreview extends HTMLElement { // Extending a normal html element creation meaning the container acts like a html element
+class DataPreview extends HTMLElement { // Extending a normal html element creation meaning the container acts like a html element
   constructor() {
     super(); // Calls the constructor on the parent (is like a empty container that behaves like a html element like a div) which is the html element
     // No data gets passed in as a argument as the browser calls the DOM element creation when it chooses
@@ -14,11 +16,12 @@ class modalPreview extends HTMLElement { // Extending a normal html element crea
 
   connectedCallback() { // Initializes the data even if empty and the shadow DOM
     // Need to link the output css to the shadow DOM element from building the tailwind
-    const tailwindCssLink = document.createElement('link');
+    /*const tailwindCssLink = document.createElement('link');
     tailwindCssLink.setAttribute("rel", "stylesheet");
     tailwindCssLink.setAttribute("href", "src/styles/stylesheets/output.css");
     // Append to the shadow DOM
-    this.shadowRoot.append(tailwindCssLink);
+    this.shadowRoot.append(tailwindCssLink);*/
+    this.saveCssBuild();
     this.render();
     // Set up the event listener for the shadow DOM element here
     this.shadowRoot.addEventListener('click', (click) => {
@@ -203,5 +206,22 @@ class modalPreview extends HTMLElement { // Extending a normal html element crea
         year: "numeric"
     });
     return formatted;
+  }
+
+  saveCssBuild() {
+    // Read your Tailwind output css file
+    const cssOutput = fs.readFileSync('src/styles/stylesheets/output.css', 'utf8'); // Reading the css fule in text
+
+    // Create a JS variable with the CSS 'file' as a string (js cannot read raw css)
+    const cssOutputString = `export const tailwindCssBuild = ${JSON.stringify(cssOutput)}`;
+    // Create a js file that stores all the css as a string
+    // Have to write to a new js file as the variable containing the css at the moment is only inside a node script
+    fs.writeFileSync('./tailwind-css.js', cssOutputString);
+
+    // Create a style tag
+    const style = document.createElement('style');
+    // Insert the 
+    style.textContent = tailwindCssBuild; // Browser sees a string with all CSS
+    this.shadowRoot.append(style);
   }
 }

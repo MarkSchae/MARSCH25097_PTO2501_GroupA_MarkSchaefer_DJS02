@@ -4,6 +4,7 @@ import { genres, podcasts, seasons } from "./data.js";
 import dataManager from "./data-handling.js";
 import relationalMapper from "./relational-mapper.js";
 import render from "./render.js";
+import tailwindCssBuild from './tailwind-css.js';
 
 // Save the static arrays to local storage as it makes it easier to filter for relational data after saved
 
