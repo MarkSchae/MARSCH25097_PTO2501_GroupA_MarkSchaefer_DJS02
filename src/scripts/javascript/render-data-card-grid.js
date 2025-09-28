@@ -6,7 +6,7 @@ export default function renderGrid(shadowRoot, appData) { // Use setter data (th
     // Clear the old to avoid duplicates
     const container = shadowRoot.getElementById('data-container-shadow-dom');
     if(container) {
-        container.innerHTML = '';
+        container.remove();
     }
     // Create the container for the individual div cards
     const dataDisplayCardContainer = document.createElement('div');
@@ -51,7 +51,7 @@ export default function renderGrid(shadowRoot, appData) { // Use setter data (th
         dataDisplayCard.append(dataObjectCoverImg, dataObjectTitle, dataObjectSeasons, dataObjectGenres, dataObjectLastUpdated);
         // Append to the container
         dataDisplayCardContainer.append(dataDisplayCard);
-        // Append to shadow DOM element
-        domNode.append(dataDisplayCardContainer);
     });
+    // Append to shadow DOM element
+    domNode.append(dataDisplayCardContainer);
 }

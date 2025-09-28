@@ -22,3 +22,7 @@ Remember to use functional programming for pure data (no modyfying arrays etc)
 
 .. - look inside the parent folder above the import/link file folder, then use names of files and subfolders 
 
+
+Using id's for webcomponent elements for get element by id might break when creating mutliple of the same component
+Keyboard navigation
+

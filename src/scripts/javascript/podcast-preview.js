@@ -14,7 +14,6 @@ class DataPreview extends HTMLElement { // Extending a normal html element creat
     this.attachShadow({mode: 'open'}); // Shadow DOM element, essentially a copy of the DOM elements but only accessable inside the component
     this.saveCssBuild();
   }
-
   connectedCallback() { // Initializes the data even if empty and the shadow DOM
     // Need to link the output css to the shadow DOM element from building the tailwind
     /*const tailwindCssLink = document.createElement('link');
@@ -28,6 +27,16 @@ class DataPreview extends HTMLElement { // Extending a normal html element creat
       // Find the nearest parent (or self) that has the modal-btn class
       const card = click.target.closest('.modal-btn');
 
+      // Add custom event to notify/communicate with the 'main app'
+      if (click.target.closest('.modal-btn')) { // Avoid sending this event for clicks that are not the card
+        this.dispatchEvent(new CustomEvent('card-clicked', {
+          detail: { cardId: card.dataset.card },
+          bubbles: true, // True - can reach all the elements inside the DOM tree (child and parent), False - stops at the current element
+          composed: true // Allows the event to pass from the shadowDOM to the light DOM
+        }));
+      }
+
+      // Rendering the card modal
       if (card) { // Checking if the element/target does exist in the DOM
           const cardId = card.dataset.card;
           this.renderCardModal(cardId); // Ensure data types are correct

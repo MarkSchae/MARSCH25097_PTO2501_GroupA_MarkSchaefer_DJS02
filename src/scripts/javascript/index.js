@@ -25,4 +25,9 @@ export const combinedArrayData = relationalMapper.combineStaticArrays(localStora
 const preview = document.querySelector('data-preview');
 preview.appDataset = combinedArrayData;
 
+// Logging the decoupled event/communication between the main app and the component
+preview.addEventListener('card-clicked', (click) => {
+    console.log('User clicked a card:', click.detail.cardId);
+});
+
 
