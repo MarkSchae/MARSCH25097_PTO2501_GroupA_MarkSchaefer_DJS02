@@ -1,12 +1,9 @@
-import renderGrid from './RenderDataCardGrid.js';
-import renderCardModalFn from './RenderCardModal.js';
-import removeCardModalFn from './ExitModalView.js';
-import saveCssBuildFn from './SaveCss.js';
+import renderGrid from './render-data-card-grid.js';
+import renderCardModalFn from './render-card-modal.js';
+import removeCardModalFn from './exit-modal-view.js';
+import saveCssBuildFn from './save-css.js';
 import { tailwindCssBuild } from './tailwind-css.js';
-// Web component to open a dataObject view on hover (already have a onclick open modal)
-    // On hover, opens the modal but only enlarges in place instead of being in the center
-    // If hovered off the modal, modal closes
-    // Might need to make the variable names more vague and accept data seperate from the main app code
+// Web component refactor of previous class for displaying podcast data
 
 // Create the web component
 class DataPreview extends HTMLElement { // Extending a normal html element creation meaning the container acts like a html element
@@ -25,7 +22,6 @@ class DataPreview extends HTMLElement { // Extending a normal html element creat
     tailwindCssLink.setAttribute("href", "src/styles/stylesheets/output.css");
     // Append to the shadow DOM
     this.shadowRoot.append(tailwindCssLink);*/
-    
     this.render();
     // Set up the event listener for the shadow DOM element here
     this.shadowRoot.addEventListener('click', (click) => {
@@ -45,7 +41,7 @@ class DataPreview extends HTMLElement { // Extending a normal html element creat
       }
     });
   }
-  // Called with .dataFromApp
+  // Called with .dataFromApp. Need to set up a getter to update with the private data
   set appDataset(dataFromApp) { // Setter allows external code to pass into the component
     this.#appData = [...dataFromApp]; // Make this private data so it is immutable externally
     this.render(); // Update the shadow DOM inside the component

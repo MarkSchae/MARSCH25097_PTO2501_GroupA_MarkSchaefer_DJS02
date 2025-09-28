@@ -1,4 +1,4 @@
-import { updatedDate } from "./HelperFuncitons.js";
+import { updatedDate } from "./helper-funcitons.js";
 
 export default function renderCardModalFn(cardId, appData, shadowRoot) { // Use setter data (this.appData for all dataObjects data) and event listener dataObject id
     const dataObject = appData.find(dataObject => dataObject.id === cardId);

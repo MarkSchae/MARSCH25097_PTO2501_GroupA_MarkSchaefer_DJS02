@@ -1,4 +1,4 @@
-import { lastUpdated } from "./HelperFuncitons.js";
+import { lastUpdated } from "./helper-funcitons.js";
 
 export default function renderGrid(shadowRoot, appData) { // Use setter data (this.appData for all dataObjects data)
     const domNode = shadowRoot; // root node of the shadow (essetially a copy of the DOM only availabe inside this component), encapsulated DOM tree inside this component
