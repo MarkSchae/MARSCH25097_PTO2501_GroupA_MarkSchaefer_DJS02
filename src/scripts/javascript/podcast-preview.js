@@ -5,8 +5,23 @@ import saveCssBuildFn from './save-css.js';
 import { tailwindCssBuild } from './tailwind-css.js';
 // Web component refactor of previous class for displaying podcast data
 
+/**
+ * @class DataPreview
+ * @extends HTMLElement
+ * 
+ * @description
+ * A Web Component that displays podcast (or any data (purpose of the vague name)) previews as cards.
+ * Handles rendering the cards responsively, and displaying a modal of the card with details on click,
+ * as well as sending a custom event/message to notify the main app of user clicks.
+ * Uses Shadow DOM for encapsulation and immutability of data.
+ * Uses imported functions within the methods for better readability (encapsulation is still achieved)
+ */
 // Create the web component
 class DataPreview extends HTMLElement { // Extending a normal html element creation meaning the container acts like a html element
+  /** 
+    * @private
+    * @type {Array<Object>} #appData - Declaration of private empty array to later store external data
+    */
   #appData = [];
   constructor() {
     super(); // Calls the constructor on the parent (is like a empty container that behaves like a html element like a div) which is the html element
@@ -50,7 +65,14 @@ class DataPreview extends HTMLElement { // Extending a normal html element creat
       }
     });
   }
-  // Called with .dataFromApp. Need to set up a getter to update with the private data
+  /**
+   * @setter appDataset
+   * @param {Array<Object>} dataFromApp - external array of data objects from the main app
+   * @description
+   * This setter can now be used to store data from the main app inside this component.
+   * Triggers a re-render of the shadow DOM to include any changes to the dataset.
+   */
+  // Called with .dataFromApp. Need to set up a getter to update with the private data in future
   set appDataset(dataFromApp) { // Setter allows external code to pass into the component
     this.#appData = [...dataFromApp]; // Make this private data so it is immutable externally
     this.render(); // Update the shadow DOM inside the component
@@ -59,6 +81,12 @@ class DataPreview extends HTMLElement { // Extending a normal html element creat
   render() {
     renderGrid(this.shadowRoot, this.#appData);
   }
+  /**
+   * @method renderCardModal
+   * @param {string|number} cardId - The ID of the card to render in the modal view
+   * @description
+   * Displays a modal for the selected data/card object. Calls DOM creation with renderCardModalFn imported function.
+   */
   // Render modal view onclick with the id of the element passed into the method/function
   renderCardModal(cardId) {
     renderCardModalFn(cardId, this.#appData, this.shadowRoot);

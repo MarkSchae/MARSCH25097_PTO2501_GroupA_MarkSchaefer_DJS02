@@ -1,5 +1,10 @@
 import { lastUpdated } from "./helper-funcitons.js";
 
+/**
+ * @function renderGrid
+ * @param {ShadowRoot} shadowRoot - The Shadow DOM root where the data cards will be rendered.
+ * @param {Array<Object>} appData - Array of data objects containing podcast information.
+ */
 export default function renderGrid(shadowRoot, appData) { // Use setter data (this.appData for all dataObjects data)
     const domNode = shadowRoot; // root node of the shadow (essetially a copy of the DOM only availabe inside this component), encapsulated DOM tree inside this component
     // Create DOM elements dynamically, open, close, other funcitonality, and append to the shadowroot/dataObjectModal

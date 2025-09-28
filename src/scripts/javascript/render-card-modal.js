@@ -1,5 +1,15 @@
 import { updatedDate } from "./helper-funcitons.js";
 
+/**
+ * @function renderCardModalFn
+ * @param {string|number} cardId - The ID of the data object to display in the modal.
+ * @param {Array<Object>} appData - Array of data objects containing podcast details.
+ * @param {ShadowRoot} shadowRoot - The Shadow DOM root where the modal will be rendered.
+ * @description
+ * Creates and displays a modal overlay for a specific data object.
+ * Creates an exit button and backdrop overlay. The actual DOM construction and styling
+ * are done programmatically within the Shadow DOM for encapsulation.
+ */
 export default function renderCardModalFn(cardId, appData, shadowRoot) { // Use setter data (this.appData for all dataObjects data) and event listener dataObject id
     const dataObject = appData.find(dataObject => dataObject.id === cardId);
     // Create the modal container DOM element
